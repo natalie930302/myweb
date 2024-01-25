@@ -240,5 +240,8 @@ header {
       -o-transform: scaleX(-1);
       transform: scaleX(-1);
     }
+    .container {
+      @apply overflow-hidden;
+    }
   }
 }
