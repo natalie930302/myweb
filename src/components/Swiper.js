@@ -30,8 +30,8 @@ const SwiperComponent = () => {
     },
     {
       portfolio_id: "100331",
-      title: "多益檢定多益檢定多益檢定多益檢定多益檢定多益檢定多益檢定",
-      type: ["高中自主學習計畫與成果"],
+      title: "多益檢定",
+      type: ["高中自主"],
       thumbnail: "/images/portfolio/100331.jpg",
       author_avatar_url:
         "https://cloud-library.luckertw.com/images/user/undefined.jpg",
@@ -52,7 +52,7 @@ const SwiperComponent = () => {
     },
     {
       portfolio_id: "100331",
-      title: "多益檢定多益檢定多益檢定多益檢定多益檢定多益檢定多益檢定",
+      title: "123",
       type: ["高中自主學習計畫與成果"],
       thumbnail: "/images/portfolio/100331.jpg",
       author_avatar_url:
