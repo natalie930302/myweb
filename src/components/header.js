@@ -2,47 +2,26 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { IconUser, IconChevronRight, IconSearch } from "@tabler/icons-react";
+import {
+  IconUser,
+  IconChevronRight,
+  IconSearch,
+  IconMenu2,
+  IconX,
+} from "@tabler/icons-react";
 
-const SubNavItem = ({ href, content, mobileOnly, desktopOnly, otherClass }) => (
-  <li
-    className={`nav-item ${
-      mobileOnly ? "block lg:hidden" : desktopOnly ? "hidden lg:block" : "block"
-    }`}
-  >
-    <a href={href} className={`nav-link ${otherClass || ""}`}>
-      {content}
-    </a>
-  </li>
-);
-
-const NavItem = ({
-  href,
-  content,
-  mobileOnly,
-  desktopOnly,
-  otherClass,
-  subitems,
-}) => {
+const NavItem = ({ content, mobileOnly, desktopOnly, subitems }) => {
   const [showSubitems, setShowSubitems] = useState(false);
-
   const toggleSubitems = () => {
     setShowSubitems(!showSubitems);
   };
 
   return (
-    <li
-      className={`nav-item ${
-        mobileOnly
-          ? "block lg:hidden"
-          : desktopOnly
-          ? "hidden lg:block"
-          : "block"
-      }`}
-    >
-      <a
-        href={href}
-        className={`nav-link ${otherClass || ""}`}
+    <>
+      <li
+        className={`nav-item ${
+          mobileOnly ? "flex lg:hidden" : desktopOnly ? "hidden lg:flex" : ""
+        }`}
         onClick={() => {
           if (subitems && subitems.length > 0) {
             toggleSubitems();
@@ -59,7 +38,7 @@ const NavItem = ({
             <IconChevronRight />
           </motion.div>
         )}
-      </a>
+      </li>
       <AnimatePresence>
         {subitems && subitems.length > 0 && (
           <motion.ul
@@ -70,15 +49,21 @@ const NavItem = ({
               visibility: showSubitems ? "visible" : "hidden",
             }}
             exit={{ opacity: 0, height: 0, visibility: "hidden" }}
-            className="sub"
+            className={`sub ${
+              mobileOnly
+                ? "flex lg:hidden"
+                : desktopOnly
+                ? "hidden lg:flex"
+                : ""
+            }`}
           >
             {subitems.map((subitem, index) => (
-              <SubNavItem key={index} {...subitem} />
+              <NavItem key={index} {...subitem} />
             ))}
           </motion.ul>
         )}
       </AnimatePresence>
-    </li>
+    </>
   );
 };
 
@@ -87,59 +72,161 @@ const Header = () => {
 
   const navItems = [
     {
-      href: "/",
       content: (
-        <Image
-          src="https://cloud-library.luckertw.com/images/logo.png"
-          alt="Lucker Library Logo"
-          width={150}
-          height={0}
-          className="my-2"
-        />
+        <a href="/" className="p-3">
+          <Image
+            src="https://cloud-library.luckertw.com/images/logo.png"
+            alt="Lucker Library Logo"
+            width={150}
+            height={0}
+            className="my-2"
+          />
+        </a>
       ),
       mobileOnly: true,
-      otherClass: "hover:bg-white",
-    },
-    { href: "#", content: "分享歷程檔案", otherClass: "text-sky-400" },
-    {
-      href: "#",
-      content: "學長姐智囊團",
     },
     {
-      href: "#",
-      content: "黃阿姨找題目",
-      otherClass: "text-yellow-400",
+      content: (
+        <a href="/upload" className="p-3 nav-link text-sky-400">
+          分享歷程檔案
+        </a>
+      ),
     },
     {
-      href: "/search",
-      content: <IconSearch className="vert-hor" />,
+      content: (
+        <a href="/about-checkup" className="p-3 nav-link">
+          學長姐智囊團
+        </a>
+      ),
+    },
+    {
+      content: (
+        <a
+          href="https://ai.huang.luckertw.com/"
+          className="p-3 nav-link text-yellow-400"
+        >
+          黃阿姨找題目
+        </a>
+      ),
+    },
+    {
+      content: (
+        <a href="/search" className="p-3">
+          <IconSearch className="vert-hor" />
+        </a>
+      ),
       desktopOnly: true,
     },
     {
-      href: "javascript:void(0);",
-      content: <IconUser />,
+      content: (
+        <div className="p-3">
+          <IconUser />
+        </div>
+      ),
       desktopOnly: true,
       subitems: [
-        { href: "#", content: "會員中心" },
-        { href: "#", content: "許願池" },
-        { href: "#", content: "登出" },
+        {
+          content: (
+            <a href="/profile" className="p-3 nav-link">
+              會員中心
+            </a>
+          ),
+        },
+        {
+          content: (
+            <a
+              href="https://www.surveycake.com/s/2RkQN"
+              className="p-3 nav-link"
+            >
+              許願池
+            </a>
+          ),
+        },
+        {
+          content: (
+            <a href="/logout" className="p-3 nav-link">
+              登出
+            </a>
+          ),
+        },
       ],
     },
     {
-      href: "javascript:void(0);",
-      content: "會員中心",
+      content: <div className="p-3">會員中心</div>,
       mobileOnly: true,
       subitems: [
-        { href: "#", content: "我的收藏" },
-        { href: "#", content: "我的檔案" },
-        { href: "#", content: "兌換紀錄" },
-        { href: "#", content: "我的麻幣" },
+        {
+          content: (
+            <a href="/profile#save" className="p-3 nav-link">
+              我的收藏
+            </a>
+          ),
+        },
+        {
+          content: (
+            <a href="/profile#files" className="p-3 nav-link">
+              我的檔案
+            </a>
+          ),
+        },
+        {
+          content: (
+            <a href="/profile#history" className="p-3 nav-link">
+              兌換紀錄
+            </a>
+          ),
+        },
+        {
+          content: (
+            <a href="/profile#assets" className="p-3 nav-link">
+              我的麻幣
+            </a>
+          ),
+        },
       ],
     },
-    { href: "#", content: "進階搜尋", mobileOnly: true },
-    { href: "/portfolio/latest", content: "最新發布", mobileOnly: true },
-    { href: "#", content: "常見問題", mobileOnly: true },
-    { href: "#", content: "隱私權政策", mobileOnly: true },
+    {
+      content: (
+        <a href="/search" className="p-3 nav-link">
+          進階搜尋
+        </a>
+      ),
+      mobileOnly: true,
+    },
+    {
+      content: (
+        <a href="/latest" className="p-3 nav-link">
+          最新發布
+        </a>
+      ),
+      mobileOnly: true,
+    },
+    {
+      content: (
+        <a href="/faq" className="p-3 nav-link">
+          常見問題
+        </a>
+      ),
+      mobileOnly: true,
+    },
+    {
+      content: (
+        <a href="/privacy" className="p-3 nav-link">
+          隱私權政策
+        </a>
+      ),
+      mobileOnly: true,
+    },
+    {
+      content: (
+        <a
+          href="/login"
+          className="lg:w-16 w-28 mx-auto my-3 lg:m-0 btn btn-primary"
+        >
+          登入
+        </a>
+      ),
+    },
   ];
 
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
@@ -164,18 +251,7 @@ const Header = () => {
             aria-controls="mobile-menu-2"
             aria-expanded={mobileMenuOpen}
           >
-            <svg
-              className="w-6 h-6"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                clipRule="evenodd"
-              ></path>
-            </svg>
+            <IconMenu2 className="size-6" />
           </button>
           <AnimatePresence>
             <motion.div
@@ -196,18 +272,7 @@ const Header = () => {
                     aria-controls="mobile-menu-2"
                     aria-expanded={mobileMenuOpen}
                   >
-                    <svg
-                      className="w-6 h-6"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
+                    <IconX className="size-6" />
                   </button>
                 </li>
                 {navItems.map((item, index) => (

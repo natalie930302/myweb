@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <main>
       <section>
-        <div className="container mx-auto py-8">
+        <div className="container mx-auto py-8 overflow-hidden">
           <h2 className="text-3xl text-primary-700 font-bold mb-4">人氣排行</h2>
           <SwiperComponent />
         </div>

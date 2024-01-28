@@ -1,11 +1,8 @@
 "use client";
-import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
-import "swiper/css";
-import "swiper/css/effect-coverflow";
-import "swiper/css/pagination";
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 
+import { Swiper, SwiperSlide } from "swiper/react";
 import {
   Autoplay,
   EffectCoverflow,
@@ -13,6 +10,7 @@ import {
   Navigation,
   Scrollbar,
 } from "swiper/modules";
+import "swiper/css";
 
 const SwiperComponent = () => {
   const data = [
@@ -101,6 +99,9 @@ const SwiperComponent = () => {
   return (
     <div className="flex justify-center items-center">
       <Swiper
+        initialSlide={1}
+        observer={true}
+        observeParents={true}
         effect={"coverflow"}
         grabCursor={true}
         loop={true}
@@ -112,7 +113,7 @@ const SwiperComponent = () => {
           stretch: calculateStretchAndDepth()?.stretch,
           depth: calculateStretchAndDepth()?.depth,
           modifier: 1,
-          slideShadows: true,
+          slideShadows: false,
         }}
         pagination={{ el: ".swiper-pagination", clickable: true }}
         navigation={{
