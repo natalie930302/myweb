@@ -40,22 +40,22 @@ const PortfolioCard = () => {
 
   return (
     <div className="portfolio-card relative shadow-default rounded-md">
-      <div className="portfolio-tag absolute md:top-6 md:left-6 top-5 left-5 bg-primary-700 text-white xs:px-3 px-2 xs:py-1.5 py-0.5 rounded-full text-sm line-clamp-1">
+      <div className="portfolio-tag absolute md:top-6 md:left-6 top-5 left-5 bg-primary-700 text-white sm:px-3 px-2 sm:py-1.5 py-0.5 rounded-full text-sm line-clamp-1">
         作品講評
       </div>
-      {/* <div className="portfolio-tag absolute md:top-6 md:left-6 top-5 left-5 bg-gray-400 text-white xs:px-3 px-2 xs:py-1.5 py-0.5 rounded-full text-sm line-clamp-1">
+      {/* <div className="portfolio-tag absolute md:top-6 md:left-6 top-5 left-5 bg-gray-400 text-white sm:px-3 px-2 sm:py-1.5 py-0.5 rounded-full text-sm line-clamp-1">
         待講評
       </div> */}
       <button
         ref={buttonRef}
         className="portfolio-dropdown-btn w-fit bg-white text-gray-400 p-0.5 rounded-full shadow-md absolute md:top-6 md:right-6 top-5 right-5"
       >
-        <IconDots className="xs:size-6 size-5" />
+        <IconDots className="sm:size-6 size-5" />
       </button>
       <AnimatePresence>
         <motion.div
           ref={dropdownRef}
-          className="portfolio-dropdown bg-white rounded-sm shadow-md xs:w-32 w-28 overflow-hidden absolute md:top-16 md:right-6 top-14 right-5"
+          className="portfolio-dropdown bg-white rounded-sm shadow-md sm:w-32 w-28 overflow-hidden absolute md:top-16 md:right-6 top-14 right-5"
           initial={{ opacity: 0, height: 0, visibility: "hidden" }}
           animate={{
             opacity: showDropdown ? 1 : 0,
@@ -92,7 +92,7 @@ const PortfolioCard = () => {
           </ul>
         </motion.div>
       </AnimatePresence>
-      {/* <div className="portfolio-btn absolute md:top-6 md:right-6 top-5 right-5 bg-secondary-500 text-white border-2 border-white p-0.5 rounded-full shadow-md text-sm xs:size-6 size-5 flex items-center justify-center">
+      {/* <div className="portfolio-btn absolute md:top-6 md:right-6 top-5 right-5 bg-secondary-500 text-white border-2 border-white p-0.5 rounded-full shadow-md text-sm sm:size-6 size-5 flex items-center justify-center">
         1
       </div> */}
       <Link href="/portfolio/100127">
