@@ -40,7 +40,7 @@ const PortfolioCard = () => {
 
   return (
     <div className="portfolio-card relative shadow-default rounded-md">
-      <div className="portfolio-tag absolute md:top-6 md:left-6 top-5 left-5 bg-primary-700 text-white sm:px-3 px-2 sm:py-1.5 py-0.5 rounded-full text-sm line-clamp-1">
+      <div className="portfolio-tag absolute md:top-6 md:left-6 top-5 left-5 bg-primary-700 text-white sm:px-3 px-2 sm:py-1.5 py-0.5 rounded-full sm:text-sm text-xs line-clamp-1">
         作品講評
       </div>
       {/* <div className="portfolio-tag absolute md:top-6 md:left-6 top-5 left-5 bg-gray-400 text-white sm:px-3 px-2 sm:py-1.5 py-0.5 rounded-full text-sm line-clamp-1">
