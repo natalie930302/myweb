@@ -20,7 +20,11 @@ const NavItem = ({ content, mobileOnly, desktopOnly, subitems }) => {
     <>
       <li
         className={`nav-item ${
-          mobileOnly ? "flex lg:hidden" : desktopOnly ? "hidden lg:flex" : ""
+          mobileOnly
+            ? "!flex lg:!hidden"
+            : desktopOnly
+            ? "!hidden lg:!flex"
+            : ""
         }`}
         onClick={() => {
           if (subitems && subitems.length > 0) {
@@ -51,9 +55,9 @@ const NavItem = ({ content, mobileOnly, desktopOnly, subitems }) => {
             exit={{ opacity: 0, height: 0, visibility: "hidden" }}
             className={`sub ${
               mobileOnly
-                ? "flex lg:hidden"
+                ? "!flex lg:!hidden"
                 : desktopOnly
-                ? "hidden lg:flex"
+                ? "!hidden lg:!flex"
                 : ""
             }`}
           >
