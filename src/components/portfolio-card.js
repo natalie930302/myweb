@@ -40,14 +40,14 @@ const PortfolioCard = () => {
 
   return (
     <div className="portfolio-card relative shadow-default rounded-md">
-      <div className="portfolio-tag absolute md:top-6 md:left-6 top-5 left-5 bg-primary-700 text-white px-4 py-1 rounded-full text-sm line-clamp-1">
+      <div className="portfolio-tag absolute md:top-6 md:left-6 top-5 left-5 bg-primary-700 text-white px-4 py-1 rounded-full shadow-default text-sm line-clamp-1">
         作品講評
       </div>
       <button
         ref={buttonRef}
-        className="portfolio-dropdown-btn w-fit bg-white text-gray-400 p-0.5 rounded-full shadow-md absolute md:top-6 md:right-6 top-5 right-5"
+        className="portfolio-dropdown-btn w-fit bg-white text-gray-400 p-0.5 rounded-full shadow-default absolute md:top-6 md:right-6 top-5 right-5"
       >
-        <IconDots className="sm:size-6 size-5" />
+        <IconDots className="size-6" />
       </button>
       <AnimatePresence>
         <motion.div
