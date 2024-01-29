@@ -6,14 +6,17 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply overflow-x-hidden w-full h-full;
-  font-family: "Roboto", "Noto Sans TC", sans-serif;
+html {
   -ms-overflow-style: none;
   scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;
   }
+}
+
+body {
+  @apply overflow-x-hidden w-full h-full;
+  font-family: "Roboto", "Noto Sans TC", sans-serif;
   * {
     @apply leading-normal whitespace-normal #{!important};
   }
@@ -238,15 +241,17 @@ header {
     @apply border-2;
     @apply p-2;
     @apply w-auto h-auto;
-    @apply text-center;
+    @apply text-center font-medium;
+    @apply focus:outline-none;
   }
   .btn-primary {
     @apply text-white bg-primary-700 border-primary-700;
     @apply rounded-md;
   }
   .btn-secondary {
-    @apply text-white bg-primary-700 border-primary-700;
-    @apply rounded-md;
+    @apply text-black bg-white border-primary-700;
+    @apply active:text-white active:bg-primary-700 active:border-primary-700;
+    @apply rounded-full;
   }
   .btn-tertiary {
     @apply text-white bg-primary-700 border-primary-700;

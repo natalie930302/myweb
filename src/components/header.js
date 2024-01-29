@@ -225,7 +225,7 @@ const Header = () => {
       content: (
         <a
           href="/login"
-          className="lg:w-16 w-28 mx-auto my-3 lg:m-0 btn btn-primary"
+          className="lg:w-16 w-28 h-fit mx-auto my-3 lg:mx-3 lg:my-auto lg:py-1 btn btn-primary"
         >
           登入
         </a>
