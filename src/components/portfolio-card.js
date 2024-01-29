@@ -93,7 +93,7 @@ const PortfolioCard = () => {
         1
       </div> */}
       <Link href="/portfolio/100127">
-        <div className="md:p-4 p-3 overflow-hidden flex flex-col md:gap-3 gap-1">
+        <div className="md:p-4 p-3 overflow-hidden flex flex-col md:gap-3 gap-2">
           <Image
             src="https://cloud-library.luckertw.com/images/portfolio/100331.jpg"
             alt="100127"
